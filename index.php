@@ -1,5 +1,25 @@
 <?php
 
+function sortDataByDifficultyScore($data) {
+
+  $lowestNumber = 0;
+
+  if (count($data)) {
+    for ($i = count($data) - 1; $i >= 0; $i--) {
+      for ($j = count($data) - 1; $j > 0; $j--) {
+        if ($data[$j]["difficulty"]["score"] < $data[$j - 1]["difficulty"]["score"]) {
+          $num = $data[$j]["difficulty"]["score"];
+          $data[$j]["difficulty"]["score"] = $data[$j - 1]["difficulty"]["score"];
+          $data[$j - 1]["difficulty"]["score"] = $num;
+        }
+      }
+    }
+  }
+
+  return $data;
+
+}
+
 function showKeywordData($store) {
   $json_data = null;
   if ($store == "ITUNES") {
@@ -16,6 +36,9 @@ function showKeywordData($store) {
   }
 
   $data = json_decode($json_data, true);
+
+  // Sort the array by least difficulty keywords to most
+  $data = sortDataByDifficultyScore($data);
 
   ?>
   <table>
@@ -38,7 +61,7 @@ function showKeywordData($store) {
 
         if ($i % 20 == 0 && $i > 5) { // Every 20 results show another table head
           ?>
-          <tr clsas="thead-row">
+          <tr class="thead-row">
             <td>keyword:</td>
             <td>traffic:</td>
             <td>difficulty:</td>
