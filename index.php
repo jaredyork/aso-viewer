@@ -8,9 +8,9 @@ function sortDataByDifficultyScore($data) {
     for ($i = count($data) - 1; $i >= 0; $i--) {
       for ($j = count($data) - 1; $j > 0; $j--) {
         if ($data[$j]["difficulty"]["score"] < $data[$j - 1]["difficulty"]["score"]) {
-          $num = $data[$j]["difficulty"]["score"];
-          $data[$j]["difficulty"]["score"] = $data[$j - 1]["difficulty"]["score"];
-          $data[$j - 1]["difficulty"]["score"] = $num;
+          $entry = $data[$j];
+          $data[$j] = $data[$j - 1];
+          $data[$j - 1] = $entry;
         }
       }
     }
