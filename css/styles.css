@@ -23,7 +23,7 @@ td {
   padding: 4px 8px 4px 8px;
 }
 
-thead tr {
+thead tr, .thead-row {
   font-weight: bold;
 }
 

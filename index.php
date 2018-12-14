@@ -51,7 +51,7 @@ function showKeywordData($store) {
         }
 
         ?>
-        <tr>
+        <tr class="thead-row">
           <td><?php echo $data[$i]["keyword"]; ?></td>
           <td><?php echo $data[$i]["traffic"]["score"]; ?></td>
           <td><?php echo $data[$i]["difficulty"]["score"]; ?></td>
