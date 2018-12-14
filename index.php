@@ -36,9 +36,9 @@ function showKeywordData($store) {
     if (count($data) > 0) {
       for ($i = 0; $i < count($data); $i++) {
 
-        if ($i % 20 == 0) { // Every 20 results show another table head
+        if ($i % 20 == 0 && $i > 5) { // Every 20 results show another table head
           ?>
-          <tr>
+          <tr clsas="thead-row">
             <td>keyword:</td>
             <td>traffic:</td>
             <td>difficulty:</td>
@@ -51,7 +51,7 @@ function showKeywordData($store) {
         }
 
         ?>
-        <tr class="thead-row">
+        <tr>
           <td><?php echo $data[$i]["keyword"]; ?></td>
           <td><?php echo $data[$i]["traffic"]["score"]; ?></td>
           <td><?php echo $data[$i]["difficulty"]["score"]; ?></td>
